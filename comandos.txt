@@ -1,0 +1,7 @@
+Comandos back end:
+Instalar o Node.js
+npm init
+npm init -y
+
+Instalando o express
+npm install express
