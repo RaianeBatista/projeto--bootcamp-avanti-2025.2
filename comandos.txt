@@ -5,3 +5,6 @@ npm init -y
 
 Instalando o express
 npm install express
+
+Instala o nodemon com dependencia de desenvolvimento
+npm install nodemon --save-dev
