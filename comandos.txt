@@ -8,3 +8,6 @@ npm install express
 
 Instala o nodemon com dependencia de desenvolvimento
 npm install nodemon --save-dev
+
+Para rodar o projeto:
+npm start
