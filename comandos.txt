@@ -39,4 +39,7 @@ npx prisma migrate dev --name init => para gerar nova migrate, sempre usa esse c
 Instalando a biblioteca de geração de HAS-> MigrateJS
 npm install bcriptjs
 
+Instala a biblioteca do javaScript JWT(json web token) para a geração de TOKEN
+npm install jsonwebtoken
+
 
