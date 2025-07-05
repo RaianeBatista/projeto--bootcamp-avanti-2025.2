@@ -1,45 +1,56 @@
 import express, { request, response } from "express";
+import pg from "pg";
 
 const app = express();
 app.use(express.json());
 
-const usuarios = [
-    {id:1 ,nome: "Raiane", idade: 25},
-    {id:2 ,nome: "Mariana", idade: 6},
-    {id:3 ,nome: "Sara", idade: 4},
-    {id:4 ,nome: "Isis", idade: 6},
-]
+const { Pool } = pg;
 
+const pool = new Pool({
+    user: "postgres",
+    password: "pgadmin",
+    host: "localhost",
+    port: 5432,
+    databe: "avanti",
+});
 
-app.get("/usuarios", (request, response) => {
-return response.json(usuarios).status(200)
-})
+app.get("/usuarios", async (request, response) => {
+    const usuarios = await pool.query("SELECT * FROM usuarios");
+    return response.json(usuarios.rows).status(200);
+});
 
-app.post("/usuarios", (request, response)=> {
-    const { nome, idade } = request.body;
-    usuarios.push({nome, idade})
-    return response.json(usuarios).status(201)
-})
+app.post("/usuarios", async (request, response) => {
+    const { nome, email, telefone } = request.body;
+    const usuario = await pool.query("INSERT INTO usuarios", [
+        nome,
+        email,
+        telefone,
+    ]);
+    return response.json(usuario).status(201);
+});
 
-app.put("/usuarios/:id", (request, response) => {
-    const { nome, idade } = request.body;
+app.put("/usuario/:id", (request, response) => {
+    const { nome, email, telefone } = request.body;
     const { id } = request.params;
 
-    const index = usuarios.findIndex(u => u.id == id)
-    usuarios[index] = { id, nome, idade };
-    
-    return response.json(usuarios).status(200);
-})
+    return response.json().status(200);
+});
 
+app.delete("/usuario/:id", (request, response) => {
+    const { id } = request.params;
 
+    const index = usuarios.findIndex((u) => u.id == id);
+    if (index == -1) {
+        return response.json({ mesage: "Usuário não encontrado" }).status(404);
+    }
 
+    usuarios.splice(index, 1);
 
-
-
-
-
-
+    return response
+        .status(200)
+        .json({ message: "Usuário deletado com sucesso" });
+});
 
 app.listen(8080, () => {
-    console.log("Running on port 8080")
-})
+    console.log("Running on port 8080");
+});

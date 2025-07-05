@@ -11,3 +11,6 @@ npm install nodemon --save-dev
 
 Para rodar o projeto:
 npm start
+
+Fazendo conexão com banco de dados
+npm install pg
