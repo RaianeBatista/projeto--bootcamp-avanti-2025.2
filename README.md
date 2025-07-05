@@ -221,26 +221,8 @@ npx prisma migrate status
 - **Controle de Acesso**: Middleware de autorização por roles
 - **Tratamento de Erros**: Mensagens padronizadas sem vazamento de dados
 
-## 📅 Cronograma de Desenvolvimento
 
-- ✅ **Backend**: Concluído (Prazo: 10/07/2025)
-- 🚧 **Frontend**: Em desenvolvimento (Prazo: 26/07/2025)
 
-## 🎯 Próximas Etapas
-
-### Frontend (ReactJS)
-- [ ] Interface de cadastro de usuários
-- [ ] Tela de login
-- [ ] Dashboard de gerenciamento
-- [ ] Formulários de edição
-- [ ] Sistema de upload de avatar
-
-### Melhorias Futuras
-- [ ] Paginação na listagem
-- [ ] Filtros de busca
-- [ ] Logs de auditoria
-- [ ] Testes automatizados
-- [ ] Deploy em produção
 
 ## 👩‍💻 Desenvolvedora Raiane Batista Silva Chaves
 
