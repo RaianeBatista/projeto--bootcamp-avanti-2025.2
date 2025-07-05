@@ -31,3 +31,7 @@ npx prisma db pull
 Através do comando de generate, se mapeia os comandos Prisma dentro do código
 
 npx prisma generate
+
+Rodando as migrates
+Inicializando o Banco
+npx prisma migrate dev --name init => para gerar nova migrate, sempre usa esse comando e muda o final
