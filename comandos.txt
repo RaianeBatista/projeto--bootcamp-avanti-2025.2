@@ -35,3 +35,8 @@ npx prisma generate
 Rodando as migrates
 Inicializando o Banco
 npx prisma migrate dev --name init => para gerar nova migrate, sempre usa esse comando e muda o final
+
+Instalando a biblioteca de geração de HAS-> MigrateJS
+npm install bcriptjs
+
+
