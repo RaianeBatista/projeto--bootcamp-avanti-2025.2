@@ -1,22 +1,15 @@
 import express, { request, response } from "express";
-import pg from "pg";
+import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 
-const { Pool } = pg;
 
-const pool = new Pool({
-    user: "postgres",
-    password: "pgadmin",
-    host: "localhost",
-    port: 5432,
-    databe: "avanti",
-});
 
 app.get("/usuarios", async (request, response) => {
-    const usuarios = await pool.query("SELECT * FROM usuarios");
-    return response.json(usuarios.rows).status(200);
+    const users = await prisma.users.findMany();
+    return response.json(users.rows).status(200);
 });
 
 app.post("/usuarios", async (request, response) => {

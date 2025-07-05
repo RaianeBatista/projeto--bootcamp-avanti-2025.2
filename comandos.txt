@@ -14,3 +14,20 @@ npm start
 
 Fazendo conexão com banco de dados
 npm install pg
+
+Iniciando o Prisma
+1º Instalando o Prisma Client
+npm install @prismaclient/client
+
+Instalando o Prisma como dependência de Desenvolvimento:
+npm install prisma --save-dev
+
+Inicializar o Prisma no projeto
+npx prisma init
+
+Para puxar as tabelas/entidades(objetos):
+npx prisma db pull
+
+Através do comando de generate, se mapeia os comandos Prisma dentro do código
+
+npx prisma generate
