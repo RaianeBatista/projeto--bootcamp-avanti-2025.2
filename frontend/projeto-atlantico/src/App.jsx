@@ -1,41 +1,34 @@
-import { useState } from 'react'
-import './App.css'
-import Card from './components/Card'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Welcome from './components/Welcome';
+import UserList from './components/UserList';
+import UserForm from './components/UserForm';
+import UserEdit from './components/UserEdit';
+import Login from './components/Login';
+import { AuthProvider } from './contexts/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/custom.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [check, setCheck] = useState(true)
-
-  const usuarios = [
-    {id: 1,nome: "Anderson", idade: 23},
-    {id: 2, nome: "Joeldo", idade: 19},
-    {id: 3, nome: "Alyne", idade: 30},
-    {id: 4, nome: "Raimundo", idade: 32},
-  ]
-
-  return (
-    <>
-    
-      <Card nome={ "Anderson"} idade={18} />
-      <Card nome={"Jheyelle"} idade={18} />
-      
-      {usuarios.map(usuario => <Card key={usuario.id} nome={usuario.nome} idade={usuario.idade} />)}
-      
-      {check ? <p>VERDADEIRO </p> : <p>FALSO</p>}
-    
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <AuthProvider>
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    <div className="container-fluid">
+                        <Routes>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/" element={<Welcome />} />
+                            <Route path="/users" element={<UserList />} />
+                            <Route path="/users/new" element={<UserForm />} />
+                            <Route path="/users/edit/:id" element={<UserEdit />} />
+                        </Routes>
+                    </div>
+                </div>
+            </Router>
+        </AuthProvider>
+    );
 }
 
-export default App
+export default App;
