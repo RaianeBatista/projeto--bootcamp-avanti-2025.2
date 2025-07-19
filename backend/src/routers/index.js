@@ -8,14 +8,14 @@ const router = Router();
 const userController = new UserController();
 const loginController = new LoginController();
 
+// Rota de autenticação (pública)
+router.post("/login", loginController.login);
+
+// Rotas de usuários
 router.get("/usuarios", authorization, userController.findAllUsers);
-
+router.get("/usuario/:id", authenticate, userController.findUser);
 router.post("/usuarios", userController.saveUser);
-
-router.put("/usuario/:id", userController.updateUser);
-
-router.delete("/usuario/:id", userController.deleteUser);
-
-router.post("/login", loginController.login)
+router.put("/usuario/:id", authenticate, userController.updateUser);
+router.delete("/usuario/:id", authenticate, userController.deleteUser);
 
 export { router };

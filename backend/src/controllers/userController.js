@@ -4,6 +4,26 @@ import bcrypt from "bcryptjs";
 export class UserController {
     async findAllUsers(request, response) {
         const usuarios = await prismaClient.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                isAdmin: true,
+                phone: true,
+                birthDate: true,
+                address: true,
+                avatarUrl: true,
+            },
+        });
+        return response.json(usuarios).status(200);
+    }
+
+    async findUser(request, response) {
+        try {
+            const { id } = request.params;
+
+            const usuario = await prismaClient.user.findUnique({
+                where: { id },
                 select: {
                     id: true,
                     name: true,
@@ -13,9 +33,23 @@ export class UserController {
                     birthDate: true,
                     address: true,
                     avatarUrl: true,
-                }
-        });
-        return response.json(usuarios).status(200);
+                    createdAt: true,
+                },
+            });
+
+            if (!usuario) {
+                return response
+                    .status(404)
+                    .json({ error: "Usuário não encontrado" });
+            }
+
+            return response.status(200).json(usuario);
+        } catch (error) {
+            return response.status(500).json({
+                error: "Erro interno do servidor",
+                details: error.message,
+            });
+        }
     }
 
     async saveUser(request, response) {
