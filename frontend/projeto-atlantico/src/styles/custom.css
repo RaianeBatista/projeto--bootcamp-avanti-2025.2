@@ -1,0 +1,165 @@
+/* Estilos personalizados para o projeto */
+
+.App {
+  min-height: 100vh;
+}
+
+/* Estilo para navbar */
+.navbar-brand {
+  font-weight: 600;
+}
+
+/* Animações para cards */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para tabelas */
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Estilo para botões */
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilo para formulários */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Estilo para avatares */
+.avatar-placeholder {
+  background: linear-gradient(45deg, #6c757d, #495057);
+}
+
+/* Estilo para badges */
+.badge {
+  font-size: 0.75em;
+}
+
+/* Loading states */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Modal overlay personalizado */
+.modal.d-block {
+  display: block !important;
+}
+
+/* Responsividade para tabelas */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Estilo para alertas */
+.alert {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.alert-success {
+  background-color: #d1edff;
+  color: #0c5460;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert-info {
+  background-color: #cce5ff;
+  color: #055160;
+}
+
+/* Estilo para o footer (se necessário) */
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+/* Animação para carregamento */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Melhorias para acessibilidade */
+.btn:focus,
+.form-control:focus,
+.form-check-input:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* Estilo para textos de ajuda */
+.form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Estilo para container principal */
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 576px) {
+  .container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Estilo para indicadores de campo obrigatório */
+.form-label::after {
+  content: "";
+}
+
+.form-label:has(+ .form-control[required])::after,
+.form-label[for] + .form-control[required] ~ .form-label::after {
+  content: " *";
+  color: #dc3545;
+}
